@@ -1,0 +1,64 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="by.fro.presentation.weather.list.WeatherListFragment">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="by.fro.presentation.weather.list.WeatherListViewModel" />
+        <variable
+                name="weatherCallbacks"
+                type="by.fro.presentation.weather.list.adapter.WeatherListAdapter.Callbacks" />
+    </data>
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:onRefreshListener="@{() -> viewModel.refresh()}"
+                app:refreshing="@{viewModel.loading}">
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/list_weather"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:weatherCallbacks="@{weatherCallbacks}"
+                    app:weatherAdapter="@{viewModel.result}"
+                    app:showLongMessage="@{viewModel.error}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/fragment_weather_list_item"/>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <!--Empty state-->
+        <LinearLayout
+                android:id="@+id/view_empty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:visible="@{viewModel.empty}"
+                tools:visibility="visible">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:text="empty"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</layout>

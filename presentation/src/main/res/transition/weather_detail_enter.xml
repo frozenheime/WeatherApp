@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionSet xmlns:android="http://schemas.android.com/apk/res/android"
+    android:transitionOrdering="sequential">
+
+    <slide android:slideEdge="top">
+        <targets>
+            <target android:targetId="@id/appbar" />
+        </targets>
+    </slide>
+    <transitionSet>
+        <slide android:slideEdge="left">
+            <targets>
+                <target android:targetId="@id/fav_city" />
+                <target android:targetId="@id/text_temperature" />
+            </targets>
+        </slide>
+        <slide android:slideEdge="bottom">
+            <targets>
+                <target android:targetId="@id/view_pager" />
+            </targets>
+        </slide>
+    </transitionSet>
+
+</transitionSet>

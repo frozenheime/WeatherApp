@@ -1,0 +1,111 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="by.fro.presentation.weather.detail.WeatherDescriptionFragment"
+        tools:targetApi="lollipop">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="by.fro.presentation.weather.detail.WeatherDetailViewModel"/>
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:fillViewport="true">
+
+        <TextView
+                android:id="@+id/text_description"
+                android:layout_width="0dp"
+                android:layout_height="17dp"
+                android:layout_margin="@dimen/text_margin"
+                android:text='@{"Description: "+ (viewModel.weather.description == null ? "no data" : viewModel.weather.description)}'
+                tools:text="description"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="24dp" android:layout_marginStart="16dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="1dp"
+                app:layout_constraintBottom_toTopOf="@+id/text_wind_speed"/>
+
+        <TextView
+                android:id="@+id/text_wind_speed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:text='@{"Wind speed: "+(viewModel.weather.windSpeed == null ? "no data" : viewModel.weather.windSpeed.toString())}'
+                tools:text="wind_speed" app:layout_constraintTop_toTopOf="@id/text_description" tools:layout_editor_absoluteX="8dp"/>
+        <TextView
+                android:id="@+id/text_clouds"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:text='@{"Clouds: "+(viewModel.weather.clouds == null ? "no data" : viewModel.weather.clouds.toString())}'
+                tools:text="clouds" app:layout_constraintTop_toTopOf="@id/text_wind_speed" tools:layout_editor_absoluteX="8dp"/>
+        <TextView
+                android:id="@+id/text_wind_deg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:text='@{"Wind deg: "+(viewModel.weather.windDeg == null ? "no data" : viewModel.weather.windDeg.toString())}'
+                tools:text="wind_deg" app:layout_constraintTop_toTopOf="@id/text_clouds" tools:layout_editor_absoluteX="8dp"/>
+        <TextView
+                android:id="@+id/text_rain1h"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:text='@{"Rain: "+(viewModel.weather.rain1h == null ? "no data" : viewModel.weather.rain1h.toString())}'
+                tools:text="rain1h" app:layout_constraintTop_toTopOf="@id/text_wind_deg" tools:layout_editor_absoluteX="8dp"/>
+        <TextView
+                android:id="@+id/text_snow1h"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:text='@{"Snow: "+(viewModel.weather.snow1h == null ? "no data" : viewModel.weather.snow1h.toString())}'
+                tools:text="snow1h" app:layout_constraintTop_toTopOf="@id/text_rain1h" tools:layout_editor_absoluteX="8dp"/>
+        <TextView
+                android:id="@+id/text_temperature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:text='@{"Temperature: "+(viewModel.weather.temperature == null ? "no data" : viewModel.weather.temperature.toString())}'
+                tools:text="temperature" app:layout_constraintTop_toTopOf="@id/text_snow1h" tools:layout_editor_absoluteX="8dp"/>
+        <TextView
+                android:id="@+id/text_temperature_min"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:text='@{"Min. temperature: "+(viewModel.weather.temperatureMin == null ? "no data" : viewModel.weather.temperatureMin.toString())}'
+                tools:text="temperature_min" app:layout_constraintTop_toTopOf="@id/text_temperature" tools:layout_editor_absoluteX="8dp"/>
+        <TextView
+                android:id="@+id/text_temperature_max"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:text='@{"Max. temperature: "+(viewModel.weather.temperatureMax == null ? "no data" : viewModel.weather.temperatureMax.toString())}'
+                tools:text="temperature_max" app:layout_constraintTop_toTopOf="@id/text_temperature_min" tools:layout_editor_absoluteX="8dp"/>
+        <TextView
+                android:id="@+id/text_pressure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:text='@{"Pressure: "+(viewModel.weather.pressure == null ? "no data" : viewModel.weather.pressure.toString())}'
+                tools:text="pressure" app:layout_constraintTop_toTopOf="@id/text_temperature_max" tools:layout_editor_absoluteX="8dp"/>
+        <TextView
+                android:id="@+id/text_humidity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:text='@{"Humidity: "+(viewModel.weather.humidity == null ? "no data" : viewModel.weather.humidity.toString())}'
+                tools:text="humidity" app:layout_constraintTop_toTopOf="@id/text_pressure"
+                tools:layout_editor_absoluteX="8dp" android:layout_marginTop="48dp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
